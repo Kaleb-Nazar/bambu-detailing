@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Car wash management system: public landing page, online booking and a mobile-first admin panel.",
+  "license": "MIT",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",

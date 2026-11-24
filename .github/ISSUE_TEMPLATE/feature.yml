@@ -1,0 +1,27 @@
+name: Feature request
+description: Propose a new feature as a user story
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      description: "As a <role>, I want <goal> so that <benefit>."
+      placeholder: "As an operator, I want to register a car by its plate so that I don't type its data every time."
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How do we know it's done?
+      placeholder: |
+        - [ ] Typing a known plate fills type, brand, model and color
+        - [ ] An unknown plate leaves the form empty
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Mockups, technical notes or open questions.

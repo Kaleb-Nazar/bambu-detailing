@@ -18,3 +18,8 @@ End-to-end TypeScript in a pnpm monorepo:
 - Node.js 26 (pinned in `.nvmrc`)
 - pnpm through Corepack (`corepack enable`)
 - Docker
+
+## Local development
+
+This starts PostgreSQL on port 5432.
+Use `docker compose down` to stop it. `docker compose down -v` also deletes its data.

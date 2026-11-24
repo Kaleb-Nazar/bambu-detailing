@@ -7,7 +7,7 @@ Management system for a real car wash in Mexico. Operators register each car fro
 see the queue of the day and change its status. The owner sees weekly income, the average ticket
 and how much was spent on cleaning supplies.
 
-> 🚧 Work in progress. The API is ready; the web app is next.
+> 🚧 Work in progress: the core flow works end to end; sign-in and deployment are next.
 
 ## Features
 
@@ -22,10 +22,10 @@ and how much was spent on cleaning supplies.
 - Weekly report: income, services, average ticket, supplies spending and net, day by day,
   in Mexico City time.
 - OpenAPI docs generated from the validation schemas.
+- Web app: landing page with prices and a mobile-first panel (today, register, purchases, report).
 
 **Next**
 
-- Web app: landing page with prices, a mobile-first panel and the weekly report.
 - Integration tests against a real PostgreSQL.
 - Online booking, sign-in with roles, real-time updates and deployment.
 
@@ -34,7 +34,7 @@ and how much was spent on cleaning supplies.
 End-to-end TypeScript in a pnpm monorepo:
 
 - **API:** Node.js 26, Fastify, Zod, PostgreSQL 18 and Drizzle ORM.
-- **Web (next):** React, React Router and Tailwind CSS.
+- **Web:** React 19, React Router (loaders and actions), Tailwind CSS and Vite.
 - **Tooling:** Turborepo, Biome, Vitest, Husky, commitlint, Docker Compose and GitHub Actions.
 
 ## Architecture
@@ -81,10 +81,13 @@ pnpm install
 docker compose up -d                  # PostgreSQL on port 5432
 pnpm --filter @bambu/api db:migrate   # create the tables
 pnpm --filter @bambu/api db:seed      # fake data
-pnpm --filter @bambu/api dev          # http://127.0.0.1:3000
+pnpm dev                              # API on :3000 and web on :5173
 ```
 
-Open **http://127.0.0.1:3000/docs** to try every endpoint.
+- Web: **http://localhost:5173** (landing) and **http://localhost:5173/panel** (panel).
+- API docs: **http://127.0.0.1:3000/docs**.
+
+In development Vite forwards `/api/*` to the API, so the browser talks to one origin.
 
 `docker compose down` stops PostgreSQL; `docker compose down -v` also deletes its data.
 
